@@ -58,17 +58,17 @@ use `<ngx-table-lib>` tag for create a table
 > Note: This table will adapt its height and width to the parent container
 
 Inputs:
-  headers - array of strings with keys for your data (fill be show as headers in table)
-  data - array of objects with data
-  enableLoader - boolean state for use loader if data not load
-  theme - value from `Theme` interface with two themes: `LIGHT` and `DARK`
-  paginate - value for count of items on page (if no use - pagination will not work)
-  total - value for set total items count
-  paginatePlaced - value from `PaginatePlaces` interface with three positions: `LEFT`, `CENTER` and `RIGHT`
+  - headers - array of strings with keys for your data (fill be show as headers in table)
+  - data - array of objects with data
+  - enableLoader - boolean state for use loader if data not load
+  - theme - value from `Theme` interface with two themes: `LIGHT` and `DARK`
+  - paginate - value for count of items on page (if no use - pagination will not work)
+  - total - value for set total items count
+  - paginatePlaced - value from `PaginatePlaces` interface with three positions: `LEFT`, `CENTER` and `RIGHT`
   
 Outputs:
-  pageWasChanged - return event with page number when it changes
-  clickOnElement - return event with index of clicked string
+  - pageWasChanged - return event with page number when it changes
+  - clickOnElement - return event with index of clicked string
   
 ![dark theme](https://github.com/MkpDolganovKirill/ngx-table-lib/blob/main/EXAMPLES/dark.png?raw=true)
 ![light theme](https://github.com/MkpDolganovKirill/ngx-table-lib/blob/main/EXAMPLES/light.png?raw=true)
