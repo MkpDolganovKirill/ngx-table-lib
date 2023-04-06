@@ -69,8 +69,8 @@ Outputs:
   pageWasChanged - return event with page number when it changes
   clickOnElement - return event with index of clicked string
   
-![alt text](https://drive.google.com/file/d/1-bwy92byjxo1OQ6jjGlcdq2m0_X2Tq_V/view?usp=sharing)
-![alt text](https://drive.google.com/file/d/1XGDfnCKDikJgeWJDZsoPFrHpgWya1pMF/view?usp=share_link)
+![dark theme](https://github.com/MkpDolganovKirill/ngx-table-lib/blob/main/EXAMPLES/dark.png?raw=true)
+![light theme](https://github.com/MkpDolganovKirill/ngx-table-lib/blob/main/EXAMPLES/light.png?raw=true)
 
 
 
