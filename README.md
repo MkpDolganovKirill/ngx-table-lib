@@ -2,23 +2,75 @@
 
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.0.
 
-## Code scaffolding
-
-Run `ng generate component component-name --project ngx-table-lib` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-table-lib`.
-> Note: Don't forget to add `--project ngx-table-lib` or else it will be added to the default project in your `angular.json` file. 
-
 ## Build
 
-Run `ng build ngx-table-lib` to build the project. The build artifacts will be stored in the `dist/` directory.
+Before build you need to do some steps:
+1. clone this project to <project_name>/projects folder
+2. install `ngx-spinner` package: `npm run ngx-spinner@14`
+4. install `ng-packagr` package
+5. add this project to your `angular.json` file
+   
+   `"ngx-table-lib": {
+      "projectType": "library",
+      "root": "projects/ngx-table-lib",
+      "sourceRoot": "projects/ngx-table-lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngx-table-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-table-lib/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-table-lib/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-table-lib/src/test.ts",
+            "tsConfig": "projects/ngx-table-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-table-lib/karma.conf.js"
+          }
+        }
+      }`
+   
+4. add `"node_modules/ngx-spinner/animations/square-jelly-box.css"` in your main project build options styles array
 
-## Publishing
+Run `ng build ngx-table-lib --configuration production` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-After building your library with `ng build ngx-table-lib`, go to the dist folder `cd dist/ngx-table-lib` and run `npm publish`.
+## Usage
 
-## Running unit tests
+For usage you need to have dist folder with this library and `npx-spinner@14` package
 
-Run `ng test ngx-table-lib` to execute the unit tests via [Karma](https://karma-runner.github.io).
+add `"node_modules/ngx-spinner/animations/square-jelly-box.css"` in your main project build options styles array
 
-## Further help
+import `NgxTableLibModule` module from `ngx-table-lib`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+use `<ngx-table-lib>` tag for create a table
+> Note: This table will adapt its height and width to the parent container
+
+Inputs:
+  headers - array of strings with keys for your data (fill be show as headers in table)
+  data - array of objects with data
+  enableLoader - boolean state for use loader if data not load
+  theme - value from `Theme` interface with two themes: `LIGHT` and `DARK`
+  paginate - value for count of items on page (if no use - pagination will not work)
+  total - value for set total items count
+  paginatePlaced - value from `PaginatePlaces` interface with three positions: `LEFT`, `CENTER` and `RIGHT`
+  
+Outputs:
+  pageWasChanged - return event with page number when it changes
+  clickOnElement - return event with index of clicked string
+  
+![alt text](https://drive.google.com/file/d/1-bwy92byjxo1OQ6jjGlcdq2m0_X2Tq_V/view?usp=sharing)
+![alt text](https://drive.google.com/file/d/1XGDfnCKDikJgeWJDZsoPFrHpgWya1pMF/view?usp=share_link)
+
+
+
