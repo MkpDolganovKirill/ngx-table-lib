@@ -10,7 +10,8 @@ Before build you need to do some steps:
 4. install `ng-packagr` package
 5. add this project to your `angular.json` file
    
-   `"ngx-table-lib": {
+  <code> 
+    "ngx-table-lib": {
       "projectType": "library",
       "root": "projects/ngx-table-lib",
       "sourceRoot": "projects/ngx-table-lib/src",
@@ -39,7 +40,8 @@ Before build you need to do some steps:
             "karmaConfig": "projects/ngx-table-lib/karma.conf.js"
           }
         }
-      }`
+      }
+  </code>
    
 4. add `"node_modules/ngx-spinner/animations/square-jelly-box.css"` in your main project build options styles array
 
