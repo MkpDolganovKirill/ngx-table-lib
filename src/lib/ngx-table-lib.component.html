@@ -1,0 +1,23 @@
+<div class="table-container {{theme}}">
+  <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="default" color="#fff" type="square-jelly-box"
+               [fullScreen]="false"></ngx-spinner>
+  <div class="table" style="{{paginate && total ? '': 'height: 100%'}}" (scroll)="onScroll($event)">
+    <table>
+      <thead #thead *ngIf="headers">
+      <th *ngFor="let header of headers">{{header}}</th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let rowObject of preparedData, let i = index" (click)="onElementClick(i)">
+        <td *ngFor="let headerKey of headers">{{rowObject[headerKey]}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pagination" style="justify-content: {{paginatePlaced}}" *ngIf="paginate && total">
+    <p class="paginate-arrow" (click)="backPage()"><</p>
+    <p>Page</p>
+    <input type="number" [value]="page" (change)="changePageValue($event)" />
+    <p>of {{pages}}</p>
+    <p class="paginate-arrow" (click)="nextPage()">></p>
+  </div>
+</div>
