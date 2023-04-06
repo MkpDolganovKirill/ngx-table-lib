@@ -7,10 +7,10 @@ This library was generated with [Angular CLI](https://github.com/angular/angular
 Before build you need to do some steps:
 1. clone this project to <project_name>/projects folder
 2. install `ngx-spinner` package: `npm run ngx-spinner@14`
-4. install `ng-packagr` package
-5. add this project to your `angular.json` file:
+3. install `ng-packagr` package
+4. add this project to your `angular.json` file:
    
-  <code> 
+  ```json
     "ngx-table-lib": {
       "projectType": "library",
       "root": "projects/ngx-table-lib",
@@ -41,9 +41,8 @@ Before build you need to do some steps:
           }
         }
       }
-  </code>
-   <br>
-4. add `"node_modules/ngx-spinner/animations/square-jelly-box.css"` in your main project build options styles array
+  ```
+5. add `"node_modules/ngx-spinner/animations/square-jelly-box.css"` in your main project build options styles array
 
 Run `ng build ngx-table-lib --configuration production` to build the project. The build artifacts will be stored in the `dist/` directory.
 
