@@ -1,11 +1,11 @@
-import {Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {PaginatePlaces, Theme} from "./ngx-table-lib.enums";
 import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'ngx-table-lib',
   templateUrl: 'ngx-table-lib.component.html',
-  styleUrls: ['ngx-table-lib.component.scss']
+  styleUrls: ['ngx-table-lib.component.scss'],
 })
 export class NgxTableLibComponent implements OnInit {
   @Input() headers?: string[];
@@ -57,6 +57,9 @@ export class NgxTableLibComponent implements OnInit {
 
   private _data: Object[] = [];
   private _total = 0;
+  private scrollTarget: any = null;
+  private wheelDeltaY = 0;
+  private loaderState = false;
 
   constructor(private spinner: NgxSpinnerService) {}
 
@@ -107,6 +110,7 @@ export class NgxTableLibComponent implements OnInit {
     } else {
       this.spinner.hide();
     }
+    this.loaderState = state;
   }
 
   private showAllData() {
@@ -147,8 +151,32 @@ export class NgxTableLibComponent implements OnInit {
   }
 
   onScroll(event: any) {
-    if (event.target.offsetHeight + event.target.scrollTop == event.target.scrollHeight) {
+    this.scrollTarget = event.target;
+    if (event.target.scrollTop === 0) {
+      this.wheelDeltaY = 0;
+    }
+    if (event.target.offsetHeight + event.target.scrollTop === event.target.scrollHeight) {
+      this.wheelDeltaY = 0;
+    }
+  }
+
+  onWheel($event: WheelEvent) {
+    if (!this.scrollTarget || this.loaderState) {
+      return;
+    }
+    this.wheelDeltaY+=$event.deltaY;
+    if ($event.deltaY < 0 && ($event.deltaY * 2) >= this.wheelDeltaY && this.scrollTarget.scrollTop === 0 && this.page != 1) {
+      this.backPage();
+      this.wheelDeltaY = 0;
+    }
+    if (
+      $event.deltaY > 0 &&
+      ($event.deltaY * 2) <= this.wheelDeltaY &&
+      this.scrollTarget.offsetHeight + this.scrollTarget.scrollTop === this.scrollTarget.scrollHeight &&
+      this.page != this.pages
+    ) {
       this.nextPage();
+      this.wheelDeltaY = 0;
     }
   }
 }

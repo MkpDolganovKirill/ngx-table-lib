@@ -1,7 +1,7 @@
 <div class="table-container {{theme}}">
   <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="default" color="#fff" type="square-jelly-box"
                [fullScreen]="false"></ngx-spinner>
-  <div class="table" style="{{paginate && total ? '': 'height: 100%'}}" (scroll)="onScroll($event)">
+  <div class="table" style="{{paginate && total ? '': 'height: 100%'}}" (scroll)="onScroll($event)" (wheel)="onWheel($event)">
     <table>
       <thead #thead *ngIf="headers">
       <th *ngFor="let header of headers">{{header}}</th>
